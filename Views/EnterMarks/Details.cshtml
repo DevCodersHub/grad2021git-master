@@ -1,0 +1,39 @@
+﻿@model List<grad2021.Models.StudentCourse>
+<h1>@ViewData["Title"]</h1>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<a href="~/EnterMarks?BranchName=@Model[0].CourseEnrollment.BranchName.Replace(" ", "+")&LevelName=@Model[0].CourseEnrollment.LevelName.Replace(" ", "+")">
+        العودة لقائمة المواد
+    </a>*@
+
+    <table id="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model[0].ApplicationUser.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model[0].CourseWorkMark)</th>
+            <th>@Html.DisplayNameFor(model => model[0].MidTermMark)</th>
+            <th>@Html.DisplayNameFor(model => model[0].OralExamMark)</th>
+            <th>@Html.DisplayNameFor(model => model[0].FinalExamMark)</th>
+            <th>@Html.DisplayNameFor(model => model[0].MerciMark)</th>
+            <th>@Html.DisplayNameFor(model => model[0].TotalMark)</th>
+            <th>@Html.DisplayNameFor(model => model[0].CourseGrade)</th>
+        </tr>
+        @for (int b = 0; b < Model.Count; b++)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => model[b].ApplicationUser.UserName)</td>
+                <td>@Html.DisplayFor(model => model[b].CourseWorkMark)</td>
+                <td>@Html.DisplayFor(model => model[b].MidTermMark)</td>
+                <td>@Html.DisplayFor(model => model[b].OralExamMark)</td>
+                <td>@Html.DisplayFor(model => model[b].FinalExamMark)</td>
+                <td>@Html.DisplayFor(model => model[b].MerciMark)</td>
+                <td>@Html.DisplayFor(model => model[b].TotalMark)</td>
+                <td>@Html.DisplayFor(model => model[b].CourseGrade)</td>
+            </tr>
+        }
+    </table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

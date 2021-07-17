@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Administrator Page";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>This is the Administrator page to show Administrator Tasks</p>
+<a href="~/Identity/Account/Register">Register a new member</a></br>
+<a href="~/Identity/Account/ForgotPassword">Reset a member password</a></br>
+<a href="~/Identity/Account/Manage/DeletePersonalData">Delete a member</a>

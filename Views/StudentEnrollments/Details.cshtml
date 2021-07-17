@@ -1,0 +1,67 @@
+﻿@model grad2021.Models.StudentEnrollment
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>StudentEnrollment</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CompleteLevelMark)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CompleteLevelMark)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentGrade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentGrade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FailureNo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FailureNo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentGrade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentGrade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicationUser)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationUser.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Branch)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Branch.BranchName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Level.LevelName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AcademicYear)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AcademicYear.AcademicYearID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.StudentEnrollmentID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

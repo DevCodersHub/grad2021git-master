@@ -1,0 +1,77 @@
+﻿@model IEnumerable<grad2021.Models.StudentEnrollment>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompleteLevelMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentGrade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FailureNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentGrade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicationUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Branch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Level)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYear)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompleteLevelMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FailureNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch.BranchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level.LevelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcademicYear.AcademicYearID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StudentEnrollmentID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StudentEnrollmentID">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

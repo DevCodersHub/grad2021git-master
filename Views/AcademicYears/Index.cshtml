@@ -1,0 +1,72 @@
+﻿@model IEnumerable<grad2021.Models.AcademicYear>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var thisYear = Model.First(a => a.AcademicYearID ==
+         Model.Max(a => a.AcademicYearID));
+    int NextYearFirstID = thisYear.AcademicYearID + 1;
+    int NextYearSecondID = NextYearFirstID + 1;
+}
+<h1>Index</h1>
+<p>
+    <a asp-action="Create">@NextYearSecondID / @NextYearFirstID تسجيل عام جديد</a></br>
+    <a>بالضغط هنا سيتم حساب درجات الطلاب في العام الحالي ومعرفة حالتهم من النجاح والرسوب في جميع المواد</a></br></br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYearID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstSemesterStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstSemesterExamsStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondSemesterStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondSemesterExamsStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NovemberExamsStartDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AcademicYearID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstSemesterStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstSemesterExamsStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondSemesterStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondSemesterExamsStartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NovemberExamsStartDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AcademicYearID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AcademicYearID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AcademicYearID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,63 @@
+﻿@model List<grad2021.Models.StudentCourse>
+<h1>@ViewData["Title"]</h1>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <a href="~/EnterMarks?BranchName=@Model[0].CourseEnrollment.BranchName.Replace(" ", "+")&LevelName=@Model[0].CourseEnrollment.LevelName.Replace(" ", "+")">
+        العودة لقائمة المواد
+    </a>
+
+                <form asp-controller="EnterMarks" asp-action="Edit" method="post">
+                    <div class="form-group">
+
+                        <table class="table" id="table">
+                            <thead>
+                                <tr>
+                                    <th hidden>@Html.DisplayNameFor(model => model[0].StudentCourseID)</th>
+                                    <th hidden>@Html.DisplayNameFor(model => model[0].AcademicYearID)</th>
+                                    <th hidden>@Html.DisplayNameFor(model => model[0].CourseEnrollmentID)</th>
+                                    <th hidden>@Html.DisplayNameFor(model => model[0].StudentEnrollmentID)</th>
+                                    <th hidden>@Html.DisplayNameFor(model => model[0].ApplicationUserID)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].ApplicationUser.UserName)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].CourseWorkMark)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].MidTermMark)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].OralExamMark)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].FinalExamMark)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].MerciMark)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].TotalMark)</th>
+                                    <th>@Html.DisplayNameFor(model => model[0].CourseGrade)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int b = 0; b < Model.Count; b++)
+                                {
+                                    <tr>
+                                        <td hidden>@Html.EditorFor(model => model[b].StudentCourseID)</td>
+                                        <td hidden>@Html.EditorFor(model => model[b].AcademicYearID)</td>
+                                        <td hidden>@Html.EditorFor(model => model[b].CourseEnrollmentID)</td>
+                                        <td hidden>@Html.EditorFor(model => model[b].StudentEnrollmentID)</td>
+                                        <td hidden>@Html.EditorFor(model => model[b].ApplicationUserID)</td>
+                                        <td>@Html.DisplayFor(model => model[b].ApplicationUser.UserName)</td>
+                                        <td>@Html.EditorFor(model => model[b].CourseWorkMark)</td>
+                                        <td>@Html.EditorFor(model => model[b].MidTermMark)</td>
+                                        <td>@Html.EditorFor(model => model[b].OralExamMark)</td>
+                                        <td>@Html.EditorFor(model => model[b].FinalExamMark)</td>
+                                        <td>@Html.EditorFor(model => model[b].MerciMark)</td>
+                                        <td>@Html.DisplayFor(model => model[b].TotalMark)</td>
+                                        <td>@Html.DisplayFor(model => model[b].CourseGrade)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <input type="submit" value="حفظ" class="btn btn-primary" asp-route-id="@Model[0].CourseEnrollmentID" />
+                    </div>
+
+                </form>
+            
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }

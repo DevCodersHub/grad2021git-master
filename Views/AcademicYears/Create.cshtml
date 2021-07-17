@@ -1,0 +1,52 @@
+﻿@model grad2021.Models.AcademicYear
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var thisYear = Model.AcademicYearID;
+    int NextYearFirstID = thisYear + 1;
+    int NextYearSecondID = NextYearFirstID + 1;
+    List<int> ListYears = new List<int>();
+    ListYears.Add(NextYearFirstID);
+    IEnumerable<int> SelectionYears = ListYears;
+
+}
+
+<h1>إنشاء عام دراسي جديد</h1>
+
+<h4>إنشاء عام دراسي جديد يكون بالضغط على الزر أسفل الصفحة ويترتب عليه الآتي</h4></br>
+<ul>
+    <li>حساب مجموع درجات كل مادة للطالب</li>
+    <li>تحديد مواد الرسوب لإعادة تسجيلها مباشرة في العام الجديد</li>
+    <li>في حالة تخطي مواد الرسوب عدد مادتين أو في حالة رسوب الطالب في مادة ضرورية للنجاح يتم احتساب الطالب راسبا</li>
+    <li>في حال رسوب طالب السنة النهائية في أقل  من ثلاث مواد يتم قيد الطالب في دور نوفمبر</li>
+    <li>الطلاب الناجحون يتم نقلهم مباشرة للعام الدراسي التالي</li>
+    <li>طلاب التشعيب وهم طلاب السنة الإعدادية وطلاب السنة الثالثة لقسم الهندسة الميكانيكية، يتم ترتيب الناجحين وتسجيلهم على حسب رغباتهم وسعة الأقسام / الشعب</li>
+    <li>تحديد مواد الرسوب لإعادة تسجيلها مباشرة في العام الجديد</li>
+</ul>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div hidden class="form-group">
+                @*<label asp-for="AcademicYearID" class="control-label"></label>*@
+                <label class="control-label">@NextYearSecondID / @NextYearFirstID تأكيد تسجيل عام جديد</label>
+                @Html.DropDownListFor(model => model.AcademicYearID,
+                new SelectList(SelectionYears), new { @class = "form-control" })
+                <span asp-validation-for="AcademicYearID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="اضغط لتسجيل عام جديد" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">عودة لقائمة الأعوام الدراسية</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

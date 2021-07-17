@@ -1,0 +1,67 @@
+﻿@model grad2021.Models.StudentEnrollment
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>StudentEnrollment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ApplicationUserID" class="control-label"></label>
+                <select asp-for="ApplicationUserID" class ="form-control" asp-items="ViewBag.ApplicationUserID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BranchName" class="control-label"></label>
+                <select asp-for="BranchName" class ="form-control" asp-items="ViewBag.BranchName"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcademicYearID" class="control-label"></label>
+                <select asp-for="AcademicYearID" class ="form-control" asp-items="ViewBag.AcademicYearID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="LevelName" class="control-label"></label>
+                <select asp-for="LevelName" class ="form-control" asp-items="ViewBag.LevelName"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompleteLevelMark" class="control-label"></label>
+                <input asp-for="CompleteLevelMark" class="form-control" />
+                <span asp-validation-for="CompleteLevelMark" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    @Html.DropDownListFor(model => model.StudentGrade,
+               new SelectList(Enum.GetValues(typeof(StudentGrade))), new { @class = "form-control" })
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="FailureNo" class="control-label"></label>
+                <input asp-for="FailureNo" class="form-control" />
+                <span asp-validation-for="FailureNo" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    @Html.DropDownListFor(model => model.StudentGrade,
+               new SelectList(Enum.GetValues(typeof(StudentGrade))), new { @class = "form-control" })
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

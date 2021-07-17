@@ -1,0 +1,178 @@
+﻿@model List<grad2021.Models.StudentEnrollment>
+<h1>@ViewData["Title"]</h1>
+
+
+<table id="table">
+
+    <tr>
+        <th colspan="1" scope="colgroup">اسم الطالب</th>
+        <th colspan="3" scope="colgroup">الإعدادية</th>
+        <th colspan="3" scope="colgroup">الأولى</th>
+        <th colspan="3" scope="colgroup">الثانية</th>
+        <th colspan="3" scope="colgroup">الثالثة</th>
+        <th colspan="3" scope="colgroup">الرابعة</th>
+        <th colspan="4" scope="colgroup">التراكمى</th>
+    </tr>
+    <tr>
+        <th scope="col"></th>
+        @for (int i = 0; i < 5; i++)
+        {
+<th scope="col">المجموع</th>
+                <th scope="col">التقدير</th>
+                                <th scope="col">%</th>}
+        <th scope="col">المجموع</th>
+        <th scope="col">التقدير</th>
+        <th scope="col">%</th>
+        <th scope="col">مرتبة الشرف</th>
+    </tr>
+
+
+    @for (int i = 0; i < Model.Count; i += 5)
+    {
+<tr>
+    <td>@Html.DisplayFor(model => model[i].ApplicationUser.UserName)</td>
+    <td>@Html.DisplayFor(model => model[i].CompleteLevelMark)</td>
+    <td>@Html.DisplayFor(model => model[i].StudentGrade)</td>
+    <td></td>
+    <td>@Html.DisplayFor(model => model[i + 1].CompleteLevelMark)</td>
+    <td>@Html.DisplayFor(model => model[i + 1].StudentGrade)</td>
+    <td></td>
+    <td>@Html.DisplayFor(model => model[i + 2].CompleteLevelMark)</td>
+    <td>@Html.DisplayFor(model => model[i + 2].StudentGrade)</td>
+    <td></td>
+    <td>@Html.DisplayFor(model => model[i + 3].CompleteLevelMark)</td>
+    <td>@Html.DisplayFor(model => model[i + 3].StudentGrade)</td>
+    <td></td>
+    <td>@Html.DisplayFor(model => model[i + 4].CompleteLevelMark)</td>
+    <td>@Html.DisplayFor(model => model[i + 4].StudentGrade)</td>
+    <td></td>
+    <td>@Html.DisplayFor(model => model[i].ApplicationUser.FinalMark)</td>
+    <td>@Html.DisplayFor(model => model[i].ApplicationUser.FinalGrade)</td>
+    <td></td>
+    <td>@Html.DisplayFor(model => model[i].ApplicationUser.HonourDegree)</td>
+</tr>}
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+@*<form asp-action="Lists" method="get">
+
+        <div class="form-group">
+            <label class="control-label">تأكيد تسجيل عام جديد</label>
+            <Select name="SearchString" value="@ViewData["CurrentFilter"]">
+                <option>Name1</option>
+                <option>Name3</option>
+            </Select>
+            <input type="submit" value="Search" class="btn btn-default" />
+            <span class="text-danger"></span>
+        </div>
+    </form>
+
+    @{ if (ViewData["CurrentFilter"] == null) { }
+        else if (ViewData["CurrentFilter"].ToString() == "Name1")
+        {
+            List<string> mystring = new();
+            mystring.Add("اسم الطالب");
+            mystring.Add("العام الدراسي");
+            mystring.Add("الشعبة");
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        @{
+                            foreach (string x in mystring)
+                            {
+                                <th>@x</th>
+                            }
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        List<Microsoft.AspNetCore.Html.IHtmlContent> cnt = new();
+                        cnt.Add(Html.DisplayFor(modelItem => item.ApplicationUser.UserName));
+                        cnt.Add(Html.DisplayFor(modelItem => item.AcademicYearID));
+                        cnt.Add(Html.DisplayFor(modelItem => item.BranchName));
+
+                        <tr>
+                            @foreach (var x in cnt)
+                            {
+                            <td>
+                                @x
+                            </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="piechart" style="width: 900px; height: 500px;"></div>
+@section scripts{
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['التقدير', 'عدد الطلاب'],
+                ['امتياز', @ViewData["Grade1"]],
+                ['جيد جدا', @ViewData["Grade2"]],
+                ['جيد', @ViewData["Grade3"]],
+                ['مقبول', @ViewData["Grade4"]],
+                ['بمواد', @ViewData["Grade5"]],
+                ['راسب', @ViewData["Grade6"]]
+            ]);
+
+            var options = {
+                title: 'مخطط توضيح تقديرات الطلاب للعام المنصرم'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+}

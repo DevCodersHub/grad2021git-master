@@ -1,0 +1,149 @@
+﻿@model IEnumerable<grad2021.Models.StudentEnrollment>
+@{
+    ViewData["Title"] = "Student Page";
+    var thisYear = Model.First(a => a.AcademicYearID ==
+         Model.Max(a => a.AcademicYearID)).AcademicYear;
+}
+<h1>@ViewData["Title"]</h1>
+
+<a href="~/Selections" id="hyperButton">صفحة الرغبات</a>
+
+<h3 align="center">تواريخ مهمة</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYear.FirstSemesterStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYear.FirstSemesterExamsStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYear.SecondSemesterStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYear.SecondSemesterExamsStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYear.NovemberExamsStartDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => thisYear.FirstSemesterStartDate)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => thisYear.FirstSemesterExamsStartDate)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => thisYear.SecondSemesterStartDate)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => thisYear.SecondSemesterExamsStartDate)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => thisYear.NovemberExamsStartDate)
+            </th>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicYearID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BranchName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentGrade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LevelName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AcademicYearID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BranchName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentGrade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LevelName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3 align="center">درجات الطالب في العام الدراسي الحالي</h3>
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th>
+                اسم المقرر
+            </th>
+            <th>
+                العام الدراسي
+            </th>
+            <th>
+                المرحلة
+            </th>
+            <th>
+                الفصل الدراسي
+            </th>
+            <th>
+                الدرجة
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.First(a => a.AcademicYearID ==
+        Model.Max(a => a.AcademicYearID)).StudentCourses)
+        {
+            double totalMark = item.CourseWorkMark + item.FinalExamMark +
+                item.MerciMark + item.MidTermMark + item.OralExamMark;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseEnrollment.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AcademicYearID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseEnrollment.LevelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseEnrollment.Term)
+                </td>
+                <td>
+                    @totalMark
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    #hyperButton {
+        background-color: mediumseagreen;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+</style>

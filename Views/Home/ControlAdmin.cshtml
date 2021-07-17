@@ -1,0 +1,8 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> SignInManager
+@{ ViewData["Title"] = "صفحة الكنترول"; }
+<h1>@ViewData["Title"]</h1>
+
+<p>الأعمال الخاصه بالكنترول</p>
+<a href="~/EnterMarks">إدخال درجات الفصل الدراسي الأول للعام الدراسي @ViewData["thisYear"] / @ViewData["nextYear"]</a></br>
+<a href="~/EnterMarks">إدخال درجات الفصل الدراسي الثاني للعام الدراسي @ViewData["thisYear"] / @ViewData["nextYear"]</a>

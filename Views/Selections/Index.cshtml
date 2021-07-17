@@ -1,0 +1,99 @@
+﻿@model List<grad2021.Models.Selection>
+<h1>@ViewData["Title"]</h1>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<a id="hyperButton" href="~/Home">
+    العودة للصفحة الرئيسية
+</a>
+
+
+<div id="sortable" class="pagina" style="width: 524px;">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <div class="ui-state-default linha" id="@Model[i].SelectionBranchName">
+            <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+            @Html.DisplayFor(model => model[i].SelectionBranchName)
+        </div>
+    }
+</div>
+<div class="container">
+    <button type="submit" id="submitSort" class="btn btn-primary linha">حفظ الرغبات على الترتيب</button>
+</div>
+
+<style>
+
+
+    .pagina {
+        text-align: center;
+        width: auto;
+        height: auto;
+        padding: 25px;
+    }
+
+    .linha {
+        border: 1px solid #ddd;
+        text-align: center;
+        width: auto;
+        padding: 15px;
+        height: auto;
+    }
+
+    #submitSort {
+        text-align: center;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        background-color: #04AA6D;
+        color: white;
+    }
+
+    #hyperButton {
+        background-color: mediumseagreen;
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+</style>
+<script>
+
+    $(function () {
+        var order = new Array;
+        $("#sortable").sortable({
+            placeholder: "ui-state-highlight",
+            cursor: 'crosshair',
+            update: function (event, ui) {
+                order = $("#sortable").sortable("toArray");
+            }
+        });
+        $("#sortable").disableSelection();
+        $("#submitSort").click(function () {
+            event.preventDefault();
+            var orderSubmit = [];
+            orderSubmit.length = order.length;
+            for (let i = 0; i < order.length; i++) {
+                orderSubmit[i] = { SelectionBranchName: order[i] };
+            }
+            orderSubmit = JSON.stringify(orderSubmit);
+            orderSubmit = JSON.parse(orderSubmit);
+            $.ajax({
+                type: "Post",
+                url: "/Selections/Edit",
+                data: { selections: orderSubmit },
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.log('in error');
+                }
+            });
+        });
+    });
+
+</script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
