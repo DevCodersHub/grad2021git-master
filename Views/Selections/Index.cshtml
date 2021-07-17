@@ -1,29 +1,37 @@
-﻿@model List<grad2021.Models.Selection>
+@model List<grad2021.Models.Selection>
 <h1>@ViewData["Title"]</h1>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["الهندسة المدنية"] = "fa-hard-hat";
+    ViewData["الهندسة المعمارية"] = "fa-drafting-compass";
+    ViewData["هندسة القوى والآلات الكهربية"] = "fa-plug";
+    ViewData["هندسة الإلكترونيات والاتصالات الكهربية"] = "fa-wifi";
+    ViewData["هندسة الحاسبات والنظم"] = "fa-laptop-code";
+    ViewData["الهندسة الميكانيكية"] = "fa-cogs";
 }
-<a id="hyperButton" href="~/Home">
-    العودة للصفحة الرئيسية
-</a>
-
 
 <div id="sortable" class="pagina" style="width: 524px;">
     @for (int i = 0; i < Model.Count; i++)
     {
         <div class="ui-state-default linha" id="@Model[i].SelectionBranchName">
             <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-            @Html.DisplayFor(model => model[i].SelectionBranchName)
+            <figure>
+                <i class="fas @ViewData[$"{Model[i].SelectionBranchName}"] fa-3x"></i>
+                <figcaption>@Html.DisplayFor(model => model[i].SelectionBranchName)</figcaption>
+            </figure>
         </div>
     }
 </div>
 <div class="container">
     <button type="submit" id="submitSort" class="btn btn-primary linha">حفظ الرغبات على الترتيب</button>
 </div>
+@*<div class="container">
+    <a id="hyperButton" href="~/Home">
+        العودة للصفحة الرئيسية
+    </a>
+</div>*@
 
 <style>
-
-
     .pagina {
         text-align: center;
         width: auto;
@@ -34,7 +42,9 @@
     .linha {
         border: 1px solid #ddd;
         text-align: center;
-        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
         padding: 15px;
         height: auto;
     }
