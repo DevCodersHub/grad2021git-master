@@ -15,9 +15,18 @@
             </ul>
         </nav>
     </header>
-    
+    <main>
+        <section>
+            <h3 id="overview">Overview</h3>
+            <p>Management Information System is a graduation project that aims to automate some of 
+                the college managerial work.
+                It is done Under the supervision of Prof. Dr. xxx.
+                In the details section, the exact tasks that can be done by this project are introduced.
+            </p>
+        </section>
+    </main>
     <footer>
-        &copy; DevCodersHub
+        &copy; 2021 by DevCodersHub
     </footer>
 </body>
 
