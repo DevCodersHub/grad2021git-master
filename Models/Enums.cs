@@ -89,7 +89,7 @@ namespace grad2021.Models
     public enum Gender
     { ذكر, أنثى }
     public enum SelectionStatus
-    { إعدادي, أولى, ثالثة_ميكانيكا, رابعة_ميكانيكا}
+    { إعدادي, أولى,رابعة_ميكانيكا}
 }
 
 //public enum Boys

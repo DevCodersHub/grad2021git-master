@@ -412,7 +412,7 @@ namespace grad2021.Migrations
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الميكانيكية",
                             FullCapacity = 2,
-                            SelectionStatus = 2
+                            SelectionStatus = 1
                         },
                         new
                         {
@@ -421,7 +421,7 @@ namespace grad2021.Migrations
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الميكانيكية",
                             FullCapacity = 2,
-                            SelectionStatus = 3
+                            SelectionStatus = 2
                         },
                         new
                         {
@@ -430,7 +430,7 @@ namespace grad2021.Migrations
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الميكانيكية",
                             FullCapacity = 2,
-                            SelectionStatus = 3
+                            SelectionStatus = 2
                         },
                         new
                         {
@@ -439,7 +439,7 @@ namespace grad2021.Migrations
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الميكانيكية",
                             FullCapacity = 2,
-                            SelectionStatus = 3
+                            SelectionStatus = 2
                         });
                 });
 

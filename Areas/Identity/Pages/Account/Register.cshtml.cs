@@ -188,8 +188,7 @@ namespace grad2021.Areas.Identity.Pages.Account
                         List<string> branchNames = new();
                         if (Input.BranchName == "الرياضيات والفيزيقا الهندسية")
                         {
-                            var selectionBranchNamesPrep = Branches.Where(b => b.SelectionStatus == SelectionStatus.أولى
-                            || b.SelectionStatus == SelectionStatus.ثالثة_ميكانيكا).ToList();
+                            var selectionBranchNamesPrep = Branches.Where(b => b.SelectionStatus == SelectionStatus.أولى).ToList();
                             foreach (Branch branch in selectionBranchNamesPrep) { branchNames.Add(branch.BranchName); }
                         }
                         else if (Input.BranchName == "الهندسة الميكانيكية" && Input.LevelName == "الثالثة")

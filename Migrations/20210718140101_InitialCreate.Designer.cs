@@ -10,8 +10,8 @@ using grad2021.Data;
 namespace grad2021.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210714084920_NewMig")]
-    partial class NewMig
+    [Migration("20210718140101_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -343,6 +343,9 @@ namespace grad2021.Migrations
                     b.Property<int>("FullCapacity")
                         .HasColumnType("int");
 
+                    b.Property<int>("SelectionStatus")
+                        .HasColumnType("int");
+
                     b.HasKey("BranchName");
 
                     b.HasIndex("DepartmentName");
@@ -356,7 +359,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف قسم الهندسة المدنية",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة المدنية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 1
                         },
                         new
                         {
@@ -364,7 +368,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف قسم الهندسة المعمارية",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة المعمارية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 1
                         },
                         new
                         {
@@ -372,7 +377,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف قسم الرياضيات والفيزيقا الهندسية",
                             CurrentCapacity = 0,
                             DepartmentName = "الرياضيات والفيزيقا الهندسية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 0
                         },
                         new
                         {
@@ -380,7 +386,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف شعبة هندسة القوى والآلات الكهربية",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الكهربية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 1
                         },
                         new
                         {
@@ -388,7 +395,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف شعبة هندسة الإلكترونيات والاتصالات الكهربية",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الكهربية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 1
                         },
                         new
                         {
@@ -396,7 +404,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف شعبة هندسة الحاسبات والنظم",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الكهربية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 1
                         },
                         new
                         {
@@ -404,7 +413,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف قسم الهندسة الميكانيكية",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الميكانيكية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 1
                         },
                         new
                         {
@@ -412,7 +422,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف شعبة هندسة الإنتاج والتصميم الميكانيكي",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الميكانيكية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 2
                         },
                         new
                         {
@@ -420,7 +431,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف شعبة الهندسة الصناعية",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الميكانيكية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 2
                         },
                         new
                         {
@@ -428,7 +440,8 @@ namespace grad2021.Migrations
                             BranchDescription = "وصف شعبة هندسة القوى الميكانيكية",
                             CurrentCapacity = 0,
                             DepartmentName = "الهندسة الميكانيكية",
-                            FullCapacity = 2
+                            FullCapacity = 2,
+                            SelectionStatus = 2
                         });
                 });
 
