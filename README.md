@@ -7,6 +7,8 @@
     <header>
         <h1>This is a Management Information System for <a href="http://www.fayoum.edu.eg/English/Engineering/">Faculty of Engineering, Fayoum University</a></h1>
         <h2>Done by <a href="https://github.com/DevCodersHub">DevCodersHub</a>
+    </header>
+    <main>
         <nav>
             <ul>
                 <li><a href="#overview">Overview</a></li>
@@ -14,8 +16,6 @@
                 <li><a href="#acknowledgement">Acknowledgement</a></li>
             </ul>
         </nav>
-    </header>
-    <main>
         <section>
             <h3 id="overview">Overview</h3>
             <p>This <abbr title="Management Information System">MIS</abbr> is a graduation project that aims to automate some of 
