@@ -1,72 +1,96 @@
-﻿@model IEnumerable<grad2021.Models.AcademicYear>
+@model IEnumerable<grad2021.Models.AcademicYear>
 
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@{
-    var thisYear = Model.First(a => a.AcademicYearID ==
-         Model.Max(a => a.AcademicYearID));
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+@{ var thisYear = Model.First(a => a.AcademicYearID ==
+                      Model.Max(a => a.AcademicYearID));
     int NextYearFirstID = thisYear.AcademicYearID + 1;
-    int NextYearSecondID = NextYearFirstID + 1;
-}
-<h1>Index</h1>
+    int NextYearSecondID = NextYearFirstID + 1; }
+
 <p>
-    <a asp-action="Create">@NextYearSecondID / @NextYearFirstID تسجيل عام جديد</a></br>
-    <a>بالضغط هنا سيتم حساب درجات الطلاب في العام الحالي ومعرفة حالتهم من النجاح والرسوب في جميع المواد</a></br></br>
+    <a asp-action="Create">
+        <button class="btn btn-secondary">
+            @NextYearSecondID / @NextYearFirstID تسجيل عام جديد
+
+        </button>
+    </a>
+
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AcademicYearID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstSemesterStartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstSemesterExamsStartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecondSemesterStartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SecondSemesterExamsStartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NovemberExamsStartDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AcademicYearID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstSemesterStartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstSemesterExamsStartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SecondSemesterStartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SecondSemesterExamsStartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NovemberExamsStartDate)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.AcademicYearID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.AcademicYearID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.AcademicYearID">Delete</a>
-                </td>
+
+
+<div class="table100 ver4 m-b-110">
+    <table class="table" data-vertable="ver4">
+        <thead>
+            <tr class="row100 head">
+                <th class="column100 column7 bc-col" data-column="column7"> </th>
+                <th class="column100 column6  bc-col" data-column="column6">
+                    @Html.DisplayNameFor(model => model.NovemberExamsStartDate)
+                </th>
+                <th class="column100 column5  bc-col" data-column="column5">
+                    @Html.DisplayNameFor(model => model.SecondSemesterExamsStartDate)
+                </th>
+                <th class="column100 column4 bc-col" data-column="column4">
+                    @Html.DisplayNameFor(model => model.SecondSemesterStartDate)
+                </th>
+                <th class="column100 column3 bc-col" data-column="column3">
+                    @Html.DisplayNameFor(model => model.FirstSemesterExamsStartDate)
+                </th>
+                <th class="column100 column2 bc-col" data-column="column2">
+                    @Html.DisplayNameFor(model => model.FirstSemesterStartDate)
+                </th>
+                <th class="column100 column1 bc-col" data-column="column1">
+                    @Html.DisplayNameFor(model => model.AcademicYearID)
+                </th>
+
+
+
+
+
+
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="row100">
+
+                    <td class="column100 column7" data-column="column7">
+                        @*<a asp-action="Edit" asp-route-id="@item.AcademicYearID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.AcademicYearID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.AcademicYearID">Delete</a>*@
+                        <a asp-action="Edit" asp-route-id="@item.AcademicYearID"> <i class="fa fa-pencil" ></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.AcademicYearID"><i class="fa fa-trash"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.AcademicYearID"><i class="fa fa-sticky-note" ></i></a>
+
+                    </td>
+
+
+                    <td class="column100 column6" data-column="column6">
+                        @Html.DisplayFor(modelItem => item.NovemberExamsStartDate)
+                    </td>
+                    <td class="column100 column5" data-column="column5">
+                        @Html.DisplayFor(modelItem => item.SecondSemesterExamsStartDate)
+                    </td>
+                    <td class="column100 column4" data-column="column4">
+                        @Html.DisplayFor(modelItem => item.SecondSemesterStartDate)
+                    </td>
+                    <td class="column100 column3" data-column="column3">
+                        @Html.DisplayFor(modelItem => item.FirstSemesterExamsStartDate)
+                    </td>
+                    <td class="column100 column2" data-column="column2">
+                        @Html.DisplayFor(modelItem => item.FirstSemesterStartDate)
+                    </td>
+                    <td class="column100 column1" data-column="column1">
+                        @Html.DisplayFor(modelItem => item.AcademicYearID)
+                    </td>
+
+
+
+
+
+                </tr>
+}
+        </tbody>
+    </table>
+
+</div>
