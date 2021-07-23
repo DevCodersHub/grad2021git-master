@@ -1,4 +1,4 @@
-﻿@model grad2021.Models.AcademicYear
+ @* ﻿@model grad2021.Models.AcademicYear
 
 @{
     ViewData["Title"] = "Edit";
@@ -94,6 +94,191 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@
+
+
+
+
+@model grad2021.Models.AcademicYear
+
+@{ ViewData["Title"] = "Edit";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<!--new   -->
+
+<div class="d-lg-flex half">
+    <!-- <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div> -->
+    <div class="contents order-2 order-md-1">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7 py-5">
+                    <h2>تعديل البيانات</h2>
+                    
+                    <form asp-action="Edit">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="AcademicYearID" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="FirstSemesterExamsStartDate" class="control-label"></label>
+                                    <input asp-for="FirstSemesterExamsStartDate" class="form-control" />
+                                    <span asp-validation-for="FirstSemesterExamsStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="FirstSemesterStartDate" class="control-label"></label>
+                                    <input asp-for="FirstSemesterStartDate" class="form-control" />
+                                    <span asp-validation-for="FirstSemesterStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="FirstSemesterObjectionStartDate" class="control-label"></label>
+                                    <input asp-for="FirstSemesterObjectionStartDate" class="form-control" />
+                                    <span asp-validation-for="FirstSemesterObjectionStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="FirstSemesterControlStartDate" class="control-label"></label>
+                                    <input asp-for="FirstSemesterControlStartDate" class="form-control" />
+                                    <span asp-validation-for="FirstSemesterControlStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group last mb-3">
+                                    <label asp-for="SecondSemesterStartDate" class="control-label"></label>
+                                    <input asp-for="SecondSemesterStartDate" class="form-control" />
+                                    <span asp-validation-for="SecondSemesterStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group last mb-3">
+                                    <label asp-for="FirstSemesterObjectionEndDate" class="control-label"></label>
+                                    <input asp-for="FirstSemesterObjectionEndDate" class="form-control" />
+                                    <span asp-validation-for="FirstSemesterObjectionEndDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="SecondSemesterControlStartDate" class="control-label"></label>
+                                    <input asp-for="SecondSemesterControlStartDate" class="form-control" />
+                                    <span asp-validation-for="SecondSemesterControlStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="SecondSemesterExamsStartDate" class="control-label"></label>
+                                <input asp-for="SecondSemesterExamsStartDate" class="form-control" />
+                                <span asp-validation-for="SecondSemesterExamsStartDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="SecondSemesterObjectionEndDate" class="control-label"></label>
+                                    <input asp-for="SecondSemesterObjectionEndDate" class="form-control" />
+                                    <span asp-validation-for="SecondSemesterObjectionEndDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="SecondSemesterObjectionStartDate" class="control-label"></label>
+                                    <input asp-for="SecondSemesterObjectionStartDate" class="form-control" />
+                                    <span asp-validation-for="SecondSemesterObjectionStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group last mb-3">
+                                    <label asp-for="NovemberExamsStartDate" class="control-label"></label>
+                                    <input asp-for="NovemberExamsStartDate" class="form-control" />
+                                    <span asp-validation-for="NovemberExamsStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group last mb-3">
+                                    <label asp-for="SecondSemesterObjectionEndDate" class="control-label"></label>
+                                    <input asp-for="SecondSemesterObjectionEndDate" class="form-control" />
+                                    <span asp-validation-for="SecondSemesterObjectionEndDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="NovemberObjectionStartDate" class="control-label"></label>
+                                    <input asp-for="NovemberObjectionStartDate" class="form-control" />
+                                    <span asp-validation-for="NovemberObjectionStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group first">
+                                    <label asp-for="NovemberControlStartDate" class="control-label"></label>
+                                    <input asp-for="NovemberControlStartDate" class="form-control" />
+                                    <span asp-validation-for="NovemberControlStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group first">
+                                    <label asp-for="NovemberObjectionEndDate" class="control-label"></label>
+                                    <input asp-for="NovemberObjectionEndDate" class="form-control" />
+                                    <span asp-validation-for="NovemberObjectionEndDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="submit" value="حفظ التعديلات" class="btn btn-danger" />
+                        </div>
+
+
+
+                        <!--<input type="submit" value="Register" class="btn px-5 btn-primary">-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
