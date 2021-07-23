@@ -1,18 +1,15 @@
-﻿@model grad2021.Models.AcademicYear
+@model grad2021.Models.AcademicYear
 
-@{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var thisYear = Model.AcademicYearID;
-    int NextYearFirstID = thisYear + 1;
-    int NextYearSecondID = NextYearFirstID + 1;
-    List<int> ListYears = new List<int>();
-    ListYears.Add(NextYearFirstID);
-    IEnumerable<int> SelectionYears = ListYears;
+@{ ViewData["Title"] = "Create";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                var thisYear = Model.AcademicYearID;
+                int NextYearFirstID = thisYear + 1;
+                int NextYearSecondID = NextYearFirstID + 1;
+                List<int> ListYears = new List<int>();
+                ListYears.Add(NextYearFirstID);
+                IEnumerable<int> SelectionYears = ListYears; }
 
-}
-
-<h1>إنشاء عام دراسي جديد</h1>
+<!--<h1>إنشاء عام دراسي جديد</h1>
 
 <h4>إنشاء عام دراسي جديد يكون بالضغط على الزر أسفل الصفحة ويترتب عليه الآتي</h4></br>
 <ul>
@@ -29,11 +26,11 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div hidden class="form-group">
+            <div hidden class="form-group">-->
                 @*<label asp-for="AcademicYearID" class="control-label"></label>*@
-                <label class="control-label">@NextYearSecondID / @NextYearFirstID تأكيد تسجيل عام جديد</label>
+                <!--<label class="control-label">@NextYearSecondID / @NextYearFirstID تأكيد تسجيل عام جديد</label>
                 @Html.DropDownListFor(model => model.AcademicYearID,
-                new SelectList(SelectionYears), new { @class = "form-control" })
+                     new SelectList(SelectionYears), new { @class = "form-control" })
                 <span asp-validation-for="AcademicYearID" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,7 +42,47 @@
 
 <div>
     <a asp-action="Index">عودة لقائمة الأعوام الدراسية</a>
-</div>
+</div>-->
+
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-9 text-center">
+
+
+            </div>
+        </div>
+
+
+
+            <div class="col-md-12 col-lg-12 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
+                <div class="icon-box">
+                    <div class="icon"><i class="ri-command-line"></i></div>
+                    <h4 class="title">
+                        <a href="~/AcademicYears">قائمة الأعوام الدراسية</a>
+                    </h4>
+
+                    <p class="description"><ul>
+    <li>تحديد مواد الرسوب لإعادة تسجيلها مباشرة في العام الجديد</li>
+    <li>في حالة تخطي مواد الرسوب عدد مادتين أو في حالة رسوب الطالب في مادة ضرورية للنجاح يتم احتساب الطالب راسبا</li>
+    <li>في حال رسوب طالب السنة النهائية في أقل  من ثلاث مواد يتم قيد الطالب في دور نوفمبر</li>
+    <li>الطلاب الناجحون يتم نقلهم مباشرة للعام الدراسي التالي</li>
+    <li>طلاب التشعيب وهم طلاب السنة الإعدادية وطلاب السنة الثالثة لقسم الهندسة الميكانيكية، يتم ترتيب الناجحين وتسجيلهم على حسب رغباتهم وسعة الأقسام / الشعب</li>
+    <li>تحديد مواد الرسوب لإعادة تسجيلها مباشرة في العام الجديد</li>
+</ul> </p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section><!-- End Hero -->
+
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
