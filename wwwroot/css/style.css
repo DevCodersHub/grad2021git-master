@@ -1,5 +1,4 @@
 
-
 /* .container {
     padding: 110px;
 } */
@@ -343,3 +342,5 @@ input[type=checkbox] {
   opacity: .2; }
 
   /*************************/
+
+  dd{margin-bottom: 0px;}
