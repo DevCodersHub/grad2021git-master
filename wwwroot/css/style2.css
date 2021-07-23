@@ -452,7 +452,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero .icon-box {
   width: 100%;
-  padding: 40px 20px;
+  padding: 30px 20px;
   position: relative;
   overflow: hidden;
   background: #fff;
@@ -466,7 +466,8 @@ h1, h2, h3, h4, h5, h6 {
 #hero .icon-box .title {
   font-weight: 700;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 25px;
+  color:brown;
 }
 
 #hero .icon-box .title a {
@@ -475,8 +476,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .icon-box .description {
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 22px;
+  line-height: 25px;
   margin-bottom: 0;
 }
 
@@ -937,6 +938,7 @@ section {
   font-weight: 600;
   margin: 10px 0 15px 0;
   font-size: 22px;
+  color: brown;
 }
 
 .services .icon-box h4 a {
