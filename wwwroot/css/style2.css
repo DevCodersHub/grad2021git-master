@@ -401,11 +401,12 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 100vh;
+  height: 500px;
   position: relative;
   /* background: url("../img/hero-bg.jpg") top center; */
   background-size: cover;
   position: relative;
+
 }
 
 
@@ -427,6 +428,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started {
+  text-align: center;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 14px;
@@ -449,7 +451,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .icon-box {
-  padding: 50px 30px;
+  width: 100%;
+  padding: 40px 20px;
   position: relative;
   overflow: hidden;
   background: #fff;
@@ -457,11 +460,12 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease-in-out;
   border-radius: 8px;
   z-index: 1;
+ 
 }
 
 #hero .icon-box .title {
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 18px;
 }
 
@@ -472,7 +476,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero .icon-box .description {
   font-size: 15px;
-  line-height: 28px;
+  line-height: 20px;
   margin-bottom: 0;
 }
 
@@ -502,7 +506,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-height: 800px) {
   #hero {
-    height: auto;
+    height: 500px;
   }
 }
 
@@ -516,7 +520,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   #hero h2 {
     font-size: 18px;
-    line-height: 24px;
+    line-height: 20px;
   }
 }
 
