@@ -54,11 +54,68 @@ namespace grad2021.Controllers
             studentEnrollments.OrderBy(a => a.ApplicationUserID).ThenByDescending(a =>a.LevelName);
             return View(studentEnrollments );
         }
-        public async Task<IActionResult> Certs()
+        public async Task<IActionResult> Certs(string searchString)
         {
-            ViewData["Title"] = "قائمة المطبوعات";
-            var studentEnrollments = await _context.StudentEnrollments.ToListAsync();
-            return View(studentEnrollments);
+            ViewData["Title"] = "بيان حالة";
+            if(searchString != null)
+            {
+                ViewData["CurrentFilter"] = searchString;
+            }
+            else { ViewData["CurrentFilter"] = "أدخل اسم الطالب"; }
+            var students = from s in _context.Users
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var student = await students
+                    .Where(s => s.UserName.Contains(searchString)).FirstAsync();
+
+                var appUserId = student.Id;
+                var studentEnrollments = await _context.StudentEnrollments
+                    .Include(a => a.StudentCourses)
+                    .ThenInclude(a =>a.CourseEnrollment.Course)
+                    .Where(a => a.ApplicationUserID == appUserId).ToListAsync();
+                return View(studentEnrollments);
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> AllResults(string BranchName, string LevelName,Term Term)
+        {
+           
+                
+
+           var academicYear = await _context.AcademicYears
+                .Include(a => a.StudentEnrollments)
+                .ThenInclude(a => a.ApplicationUser)
+                .ThenInclude(a => a.StudentCourses)
+                .ThenInclude(a => a.CourseEnrollment)
+                .OrderByDescending(a => a.AcademicYearID).FirstAsync();
+            ViewData["BranchFilter"] = "";
+            ViewData["LevelFilter"] = "";
+            ViewData["TermFilter"] = "";
+            if (BranchName != null && LevelName != null && Term != null)
+            {
+                var studentEnrollments = await _context.StudentEnrollments
+                    .Where(a => a.BranchName == BranchName && a.LevelName == LevelName ).ToListAsync();
+                ViewData["BranchFilter"] = BranchName;
+                ViewData["LevelFilter"] = LevelName;
+                ViewData["TermFilter"] = Term;
+                academicYear.StudentEnrollments = studentEnrollments;
+            
+
+                var courseEnrollments = await _context.CourseEnrollments
+                    .Where(a => a.BranchName == BranchName && a.LevelName == LevelName && a.Term == Term ).ToListAsync();
+                ViewData["BranchFilter"] = BranchName;
+                ViewData["LevelFilter"] = LevelName;
+                ViewData["TermFilter"] = Term;
+                academicYear.CourseEnrollments = courseEnrollments;
+            }
+            var branches = await _context.Branches.ToListAsync();
+            academicYear.Branches = branches;
+            var levels = await _context.Levels.ToListAsync();
+            academicYear.Levels = levels;
+            return View(academicYear);
         }
     }
 }

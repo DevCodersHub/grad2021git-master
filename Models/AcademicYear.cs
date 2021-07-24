@@ -106,6 +106,12 @@ namespace grad2021.Models
         [NotMapped]
         [Display(Name = "الشعبة")]
         public string BranchName { get; set; }
+
+        
+        [NotMapped]
+        [Display(Name = "الفصل الدراسى")]
+        public Term Term { get; set; }
+
         [NotMapped]
         public List<Level> Levels { get; set; }
         [NotMapped]

@@ -1,0 +1,99 @@
+﻿@model grad2021.Models.AcademicYear
+
+@{
+    List<string> branchNames = new();
+    List<string> levelNames = new();
+
+    foreach (Branch branch in Model.Branches) { branchNames.Add(branch.BranchName); }
+    //foreach (Level level in Model.Levels) { levelNames.Add(level.LevelName); }
+    levelNames.Add("الإعدادية");
+    levelNames.Add("الأولى");
+    levelNames.Add("الثانية");
+    levelNames.Add("الثالثة");
+    levelNames.Add("الرابعة");
+    List<StudentCourse> studentTermCourses = new();
+   
+        
+    
+
+}
+<div class="row align-items-center justify-content-center">
+    <div class="col-md-7 py-5">
+        <h3>@ViewData["Title"]</h3>
+        <form asp-action="AllResults" method="get">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group first">
+                        <label asp-for="LevelName"></label>
+                        @Html.DropDownListFor(model => model.LevelName,
+                                                     new SelectList(levelNames), new { @class = "form-control" })
+                        <span asp-validation-for="LevelName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group first">
+                        <label asp-for="BranchName"></label>
+                        @Html.DropDownListFor(model => model.BranchName,
+                                                new SelectList(branchNames), new { @class = "form-control" })
+                        <span asp-validation-for="BranchName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label asp-for="Term"></label>
+                            @Html.DropDownListFor(model => model.Term,
+                       new SelectList(Enum.GetValues(typeof(Term))), new { @class = "form-control" })
+                            <span asp-validation-for="Term" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <input type="submit" value="عرض" class="btn btn-danger" />
+                    <span class="text-danger"></span>
+                </div>
+                </div>
+        </form>
+    </div>
+</div>
+
+@if (ViewData["BranchFilter"].ToString() == "" || ViewData["LevelFilter"].ToString() == "" || ViewData["TermFilter"].ToString() == "") { }
+else
+{
+    if (Model.CourseEnrollments.First().Term == Term.الأول)
+        {
+            studentTermCourses = Model.StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الأول).ToList();
+        }
+        else
+        {
+            studentTermCourses = Model.StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الثاني).ToList();
+        }
+    <div class="table100 ver4 m-b-110">
+
+        <table class="table" id="table" data-vertable="ver4">
+            <thead>
+                <tr class="row100 head ">
+                    <th class="column100 column2 bc-col" data-column="column2">اسم الطالب</th>
+                    @foreach (var item in Model.CourseEnrollments)
+                    {
+                        <th class="column100 column1 bc-col" data-column="column1">@Html.DisplayFor(modelItem => item.CourseName)</th>
+                    }
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.StudentEnrollments)
+                {
+                <tr class="row100">
+                    <td class="column100 column1" data-column="column1">@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)</td>
+                    @foreach (var item2 in studentTermCourses)
+                    {
+
+                        <td class="column100 column1" data-column="column1">@Html.DisplayFor(modelItem => item2.TotalMark)</td>
+
+
+                    }
+                </tr>
+                }
+                    </tbody>
+            </table>
+    </div>
+}
