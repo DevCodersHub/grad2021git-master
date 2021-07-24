@@ -15,10 +15,9 @@
     {
         <div class="ui-state-default linha" id="@Model[i].SelectionBranchName">
             <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-            <figure>
-                <i class="fas @ViewData[$"{Model[i].SelectionBranchName}"] fa-3x"></i>
-                <figcaption>@Html.DisplayFor(model => model[i].SelectionBranchName)</figcaption>
-            </figure>
+                <i class="fas @ViewData[$"{Model[i].SelectionBranchName}"] fa-2x"></i>
+                @Html.DisplayFor(model => model[i].SelectionBranchName)
+                @*<figcaption>@Html.DisplayFor(model => model[i].SelectionBranchName)</figcaption>*@
         </div>
     }
 </div>
