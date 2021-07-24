@@ -1,5 +1,5 @@
-﻿@model grad2021.Models.AcademicYear
-<h1>@ViewData["Title"]</h1>
+@model grad2021.Models.AcademicYear
+
 @{
     List<string> branchNames = new();
     List<string> levelNames = new();
@@ -12,42 +12,70 @@
     levelNames.Add("الرابعة");
 
 }
-<form asp-action="Index" method="get">
-    <div class="form-group">
-        <label class="control-label">اختيار (القسم / الشعبة) و الفرقة الدراسية</label>
-        <div class="form-group">
-            <label asp-for="BranchName"></label>
-            @Html.DropDownListFor(model => model.BranchName,
-           new SelectList(branchNames), new { @class = "form-control" })
-            <span asp-validation-for="BranchName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="LevelName"></label>
-            @Html.DropDownListFor(model => model.LevelName,
-           new SelectList(levelNames), new { @class = "form-control" })
-            <span asp-validation-for="LevelName" class="text-danger"></span>
-        </div>
-        <input type="submit" value="عرض" class="btn btn-default" />
-        <span class="text-danger"></span>
-    </div>
-</form>
-@if (ViewData["BranchFilter"].ToString() == "" || ViewData["LevelFilter"].ToString() == "") { }
-else
-{
-    <table class="table" id="table">
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.CourseEnrollments.First().CourseName)</th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model.CourseEnrollments)
+
+<div class="row align-items-center justify-content-center">
+    <div class="col-md-7 py-5">
+        <h3>@ViewData["Title"]</h3>
+
+        <form asp-action="Index" method="get">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group first">
+                        <label asp-for="LevelName"></label>
+                        @Html.DropDownListFor(model => model.LevelName,
+                                                     new SelectList(levelNames), new { @class = "form-control" })
+                        <span asp-validation-for="LevelName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group first">
+                        <label asp-for="BranchName"></label>
+                        @Html.DropDownListFor(model => model.BranchName,
+                                                new SelectList(branchNames), new { @class = "form-control" })
+                        <span asp-validation-for="BranchName" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <input type="submit" value="عرض" class="btn btn-danger" />
+                <span class="text-danger"></span>
+            </div>
+        </form>
+
+
+
+        @if (ViewData["BranchFilter"].ToString() == "" || ViewData["LevelFilter"].ToString() == "") { }
+        else
         {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.CourseName)</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.CourseEnrollmentID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.CourseEnrollmentID">Details</a>
-                </td>
-            </tr>
-        }
-    </table>
-}
+    <div class="table100 ver4 m-b-110">
+      
+        <table class="table" id="table" data-vertable="ver4">
+            <thead>
+                <tr class="row100 head ">
+                    <th class="column100 column2 bc-col" data-column="column2"></th>
+                    <th class="column100 column1 bc-col" data-column="column1">@Html.DisplayNameFor(model => model.CourseEnrollments.First().CourseName)</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.CourseEnrollments)
+                {
+                <tr class="row100">
+                    <td class="column100 column2" data-column="column2">
+                        <a asp-action="Edit" asp-route-id="@item.CourseEnrollmentID">    <i class="fa fa-pencil"> </i> </a>|
+                    <a asp-action="Details" asp-route-id="@item.CourseEnrollmentID"> <i class="fa fa-clipboard"></i></a>
+                                    </td>
+                    <td  class="column100 column1" data-column="column1">@Html.DisplayFor(modelItem => item.CourseName)</td>
+
+                </tr>
+}</tbody>
+        </table> 
+        </div>}
+
+
+
+    </div>
+                </div>
