@@ -30,6 +30,9 @@ body {
     color:#000!important;
     font-size: 18px!important;
     border :2px solid brown;
+} 
+label {
+  color: #000;
 }
 h1{
     color:white!important;
