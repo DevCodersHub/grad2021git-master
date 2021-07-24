@@ -464,9 +464,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .icon-box .title {
-  font-weight: 700;
+  font-weight: 650;
   margin-bottom: 10px;
-  font-size: 21px;
+  font-size: 19px;
   color:brown;
 }
 
@@ -476,7 +476,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .icon-box .description {
-  font-size: 22px;
+  font-size: 17px;
   line-height: 25px;
   margin-bottom: 0;
 }
