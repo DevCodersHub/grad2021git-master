@@ -146,7 +146,9 @@ input[type=checkbox] {
     span{
         font-size: 20px;
     }
-
+    .spa-icon{
+      color: #fff;
+    }
 
     /***************/
     
