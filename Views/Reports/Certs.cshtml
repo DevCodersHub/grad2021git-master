@@ -58,56 +58,81 @@
 <h5>الفرقة:@Html.DisplayFor(model => Model[i].LevelName)  @Html.DisplayFor(model => Model[i].AcademicYearID)</h5>
                     <h5>المجموع الكلى:@Html.DisplayFor(model => Model[i].CompleteLevelMark)  التقدير:@Html.DisplayFor(model => Model[i].StudentGrade) </h5>
 
-                                        <table id="table">
-                                            <tr>
-                                                <th colspan="2" scope="colgroup">الفصل الدراسى الثاني</th>
+                    <table id="table">
+                        <tr>
+                            <th colspan="2" scope="colgroup">الفصل الدراسى الثاني</th>
 
-                                                <th colspan="2" scope="colgroup">الفصل الدراسى الأول</th>
+                            <th colspan="2" scope="colgroup">الفصل الدراسى الأول</th>
 
-                                            </tr>
-                                            <tr>
-                                                @for (int b = 0; b < 2; b++)
-                                                {
+                        </tr>
+                        <tr>
+                            @for (int b = 0; b < 2; b++)
+                            {
 
 
-                                                                    <th scope="col">الدرجة</th>
-                                                                    <th scope="col">اسم المادة</th>}
-                                            </tr>
-                                            @{
-                                                var term2Count = Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الثاني).Count();
+                    <th scope="col">الدرجة</th>
+                                            <th scope="col">اسم المادة</th>
+}
+                        </tr>
+                        @{ var term2Count = Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الثاني).Count();
                                                 var term1Count = Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الأول).Count();
 
                                                 int jMax = term2Count; }
-                                            @if (term1Count > term2Count) { jMax = term1Count; }
+                        @if (term1Count > term2Count) { jMax = term1Count; }
 
-                                            @for (int j = 0; j < jMax; j++)
-                                            {
-                                        <tr>
-                                            @if (j >= term1Count)
-                                            {
-                                        <td></td>
-                                                                    <td></td> }
-                                                                                            else
-                                                                                            {
+                        @for (int j = 0; j < jMax; j++)
+                        {
+                    <tr>
 
-                                                                    <td>@Html.DisplayFor(model => Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الأول).ToList()[j].TotalMark)</td>
-                                                                                                <td>@Html.DisplayFor(model => Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الأول).ToList()[j].CourseEnrollment.CourseName)</td>                        }
-                                            @if (j >= term2Count)
+
+                        @if (j >= term2Count)
+                        {
+                    <td></td>
+                                                <td></td>
+ }
+                                            else
                                             {
-                                        <td></td>
-                                                                    <td></td> }
-                                                                                            else
-                                                                                            {
-                                                                    <td>@Html.DisplayFor(model => Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الثاني).ToList()[j].CourseEnrollment.CourseName)</td>
-                                                                                                <td>@Html.DisplayFor(model => Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الثاني).ToList()[j].TotalMark)</td>                        }
-                                        </tr>
+
+
+                    <td>@Html.DisplayFor(model => Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الثاني).ToList()[j].TotalMark)</td>
+                                                <td>@Html.DisplayFor(model => Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الثاني).ToList()[j].CourseEnrollment.CourseName)</td>}
+
+
+
+
+                        @if (j >= term1Count)
+                        {
+                    <td></td>
+                                                <td></td>
+ }
+                                            else
+                                            {
+
+                    <td>@Html.DisplayFor(model => Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الأول).ToList()[j].TotalMark)</td>
+                                                <td>@Html.DisplayFor(model => Model[i].StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الأول).ToList()[j].CourseEnrollment.CourseName)</td>
 }
-                                        </table>}}
+
+
+
+
+
+
+
+                    </tr>
+                    
+                    
+                    
+                    
+                    }
+
+
+
+                     
+
+                    </table>}}
 
     </div>
 </div>
-
-
 
 
 
