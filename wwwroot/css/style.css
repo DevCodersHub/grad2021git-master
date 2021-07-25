@@ -357,3 +357,7 @@ input[type=checkbox] {
   /*************************/
 
   dd{margin-bottom: 0px;}
+ /* CSS only to highlight col-* */
+ .ta-inp td input{
+width: 80px;
+ }
