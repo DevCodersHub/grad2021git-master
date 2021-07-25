@@ -82,33 +82,41 @@ namespace grad2021.Controllers
 
         public async Task<IActionResult> AllResults(string BranchName, string LevelName,Term Term)
         {
-           
-                
-
            var academicYear = await _context.AcademicYears
                 .Include(a => a.StudentEnrollments)
-                .ThenInclude(a => a.ApplicationUser)
                 .ThenInclude(a => a.StudentCourses)
                 .ThenInclude(a => a.CourseEnrollment)
                 .OrderByDescending(a => a.AcademicYearID).FirstAsync();
+            
+            foreach(StudentEnrollment se in academicYear.StudentEnrollments)
+            {
+                se.ApplicationUser = await _context.Users.FindAsync(se.ApplicationUserID);
+            }
+
             ViewData["BranchFilter"] = "";
             ViewData["LevelFilter"] = "";
             ViewData["TermFilter"] = "";
             if (BranchName != null && LevelName != null && Term != null)
             {
-                var studentEnrollments = await _context.StudentEnrollments
-                    .Where(a => a.BranchName == BranchName && a.LevelName == LevelName ).ToListAsync();
                 ViewData["BranchFilter"] = BranchName;
                 ViewData["LevelFilter"] = LevelName;
                 ViewData["TermFilter"] = Term;
-                academicYear.StudentEnrollments = studentEnrollments;
-            
 
                 var courseEnrollments = await _context.CourseEnrollments
                     .Where(a => a.BranchName == BranchName && a.LevelName == LevelName && a.Term == Term ).ToListAsync();
-                ViewData["BranchFilter"] = BranchName;
-                ViewData["LevelFilter"] = LevelName;
-                ViewData["TermFilter"] = Term;
+
+                var studentEnrollments = await _context.StudentEnrollments
+                    .Where(a => a.AcademicYearID == academicYear.AcademicYearID && a.BranchName == BranchName && a.LevelName == LevelName).ToListAsync();
+
+
+                foreach(StudentEnrollment se in studentEnrollments)
+                {
+                    se.StudentCourses = await _context.StudentCourses.Include(a => a.CourseEnrollment)
+                        .Where(a => a.StudentEnrollmentID == se.StudentEnrollmentID &&
+                        a.CourseEnrollment.Term == Term).ToListAsync();
+                }
+
+                academicYear.StudentEnrollments = studentEnrollments;
                 academicYear.CourseEnrollments = courseEnrollments;
             }
             var branches = await _context.Branches.ToListAsync();
