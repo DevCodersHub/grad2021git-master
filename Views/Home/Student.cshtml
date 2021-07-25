@@ -1,97 +1,111 @@
-﻿@model IEnumerable<grad2021.Models.StudentEnrollment>
+@model IEnumerable<grad2021.Models.StudentEnrollment>
 @{
     ViewData["Title"] = "Student Page";
     var thisYear = Model.First(a => a.AcademicYearID ==
          Model.Max(a => a.AcademicYearID)).AcademicYear;
 }
-<h1>@ViewData["Title"]</h1>
+
+<div class="row align-items-center justify-content-center">
+    <div class="col-md-7 py-5">
 
 
+        <table class="table" id="table">
+            <thead>
+                <tr>
 
-<table class="table" id="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AcademicYearID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BranchName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentGrade)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LevelName)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentGrade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BranchName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LevelName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.AcademicYearID)
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentGrade)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.LevelName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.AcademicYearID)
+        </td>
+
+
+    </tr>
+}
+            </tbody>
+        </table>
+        <br />
+        <br />
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AcademicYearID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BranchName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentGrade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LevelName)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <h3 align="center">   @Html.DisplayFor(modelItem => item.AcademicYearID) درجات الطالب في العام الدراسي الحالي</h3>}
+                    <br />
+                                    <table class="table" id="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    الدرجة
+                                                </th>
+                                                <th>
+                                                    الفصل الدراسي
+                                                </th>
+                                                <th>
+                                                    اسم المقرر
+                                                </th>
 
-<h3 align="center">درجات الطالب في العام الدراسي الحالي</h3>
-<table class="table" id="table">
-    <thead>
-        <tr>
-            <th>
-                اسم المقرر
-            </th>
-            <th>
-                العام الدراسي
-            </th>
-            <th>
-                المرحلة
-            </th>
-            <th>
-                الفصل الدراسي
-            </th>
-            <th>
-                الدرجة
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.First(a => a.AcademicYearID ==
-        Model.Max(a => a.AcademicYearID)).StudentCourses)
-        {
-            double totalMark = item.CourseWorkMark + item.FinalExamMark +
-                item.MerciMark + item.MidTermMark + item.OralExamMark;
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseEnrollment.CourseName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AcademicYearID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseEnrollment.LevelName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CourseEnrollment.Term)
-                </td>
-                <td>
-                    @totalMark
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
 
-<a href="~/Selections" class="btn btn-danger">صفحة الرغبات</a>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.First(a => a.AcademicYearID ==
+                                          Model.Max(a => a.AcademicYearID)).StudentCourses)
+                                            {
+                                                double totalMark = item.CourseWorkMark + item.FinalExamMark +
+                                                    item.MerciMark + item.MidTermMark + item.OralExamMark;
+                            <tr>
+                                <td>
+                                    @totalMark
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CourseEnrollment.Term)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CourseEnrollment.CourseName)
+                                </td>
+
+
+
+                            </tr>
+}
+                                        </tbody>
+                                    </table>
+
+                                                    <a href="~/Selections" class="btn btn-danger">صفحة الرغبات</a>
+                                                                </div>
+</div>
