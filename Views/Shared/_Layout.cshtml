@@ -26,28 +26,41 @@
     <body>
 
         <header>
-            @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">*@
+
+
+
             <nav class="@*navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3*@ navbar navbar-default navbar-fixed-top">
+
+
+
                 <div class="container">
-                    @*<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">grad2021</a>*@
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/image/unnamed.gif" style="width:50px ; hight:50px">كلية الهندسة</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        @*<ul class="navbar-nav flex-grow-1">*@
-                       @* <ul class="nav navbar-nav navbar-left">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>*@
-                        <partial name="_LoginPartial" />
+
+
+
+                    <div>
+
+                        <button class="navbar-toggler spa-icon" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation ">
+                            <span class="navbar-toggler-icon spa-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div>
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">كلية الهندسة<img src="~/image/unnamed.gif" style="width:50px ; hight:50px"></a>
+
                     </div>
                 </div>
+
+
             </nav>
         </header>
         <div class="container">
@@ -62,7 +75,7 @@
                 <div class="row ">
                     <div class="col-12 text-center">
                         <div>
-                            <small>&copy; 2020&mdash;2021 جميع الحقوق محفوظه</small>
+                            <small>&copy; 2020&mdash;2021جميع الحقوق محفوظه</small>
                         </div>
                     </div>
                 </div>
