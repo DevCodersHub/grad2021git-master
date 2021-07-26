@@ -482,13 +482,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .icon-box .icon {
-  margin-bottom: 20px;
-  padding-top: 10px;
+  margin-bottom: 0px;
+  padding-top: 0px;
   display: inline-block;
   transition: all 0.3s ease-in-out;
-  font-size: 36px;
+  font-size: 30px;
   line-height: 1;
-  color: #2487ce;
+  color: brown;
 }
 
 #hero .icon-box:hover {
@@ -496,7 +496,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .icon-box:hover .title a {
-  color: #2487ce;
+  color: gray;
 }
 
 @media (min-width: 1024px) {
