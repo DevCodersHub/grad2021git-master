@@ -361,3 +361,8 @@ input[type=checkbox] {
  .ta-inp td input{
 width: 80px;
  }
+
+
+ .text-danger{
+   font-size: 15px;
+ }
