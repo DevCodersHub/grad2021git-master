@@ -33,19 +33,31 @@
     <form id="account" method="post">
         <div class="textbox">
             <i class="fa fa-user"></i>
-            <input asp-for="Input.Email"  placeholder="اسم المستخدم" /><br />
+            <input asp-for="Input.Email" placeholder="اسم المستخدم" /><br />
             <span asp-validation-for="Input.Email" class="text-danger"></span>
         </div>
         <div class="textbox">
             <i class="fa fa-lock"></i>
-            
-            <input asp-for="Input.Password"  placeholder="كلمه المرور" />
+
+            <input asp-for="Input.Password" placeholder="كلمه المرور" />
             <span asp-validation-for="Input.Password" class="text-danger"></span>
         </div>
 
-            <p> حفظ تسجيل الدخول <input type="checkbox"></p>
-            <input type="submit" value="تسجيل الدخول">
+        @*<p> حفظ تسجيل الدخول <input type="checkbox"></p>
+        *@
 
+       
+            <div class="checkbox">
+                <label asp-for="Input.RememberMe" style="width:100%">
+
+                    <p style="width:80% ;float:left">
+                        حفظ تسجيل الدخول
+                    </p>
+                      <input asp-for="Input.RememberMe"  style="width:20%"/>
+                </label>
+            </div>
+       
+        <input type="submit" value="تسجيل الدخول">
     </form>
 </div>
 
