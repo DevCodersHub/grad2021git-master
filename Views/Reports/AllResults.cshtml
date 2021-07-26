@@ -169,11 +169,11 @@ else
 
         <table class="table" id="table" >
             <thead>
-                <tr class="row100 head ">
-                    <th class="column100 column2 bc-col" data-column="column2">اسم الطالب</th>
+                <tr >
+                    <th ">اسم الطالب</th>
                     @foreach (var item in Model.CourseEnrollments)
                     {
-                        <th class="column100 column1 bc-col" data-column="column1">@Html.DisplayFor(modelItem => item.CourseName)</th>
+                        <th >@Html.DisplayFor(modelItem => item.CourseName)</th>
                     }
                 </tr>
             </thead>
@@ -182,11 +182,11 @@ else
                 @foreach (var item in Model.StudentEnrollments)
                 {
                 <tr class="row100">
-                    <td class="column100 column1" data-column="column1">@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)</td>
+                    <td >@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)</td>
                     @foreach (var item2 in studentTermCourses)
                     {
 
-                        <td class="column100 column1" data-column="column1">@Html.DisplayFor(modelItem => item2.TotalMark)</td>
+                        <td >@Html.DisplayFor(modelItem => item2.TotalMark)</td>
 
 
                     }
