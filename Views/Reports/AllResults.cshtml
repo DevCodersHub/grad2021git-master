@@ -181,7 +181,7 @@ else
             <tbody>
                 @foreach (var item in Model.StudentEnrollments)
                 {
-                <tr class="row100">
+                <tr >
                     <td >@Html.DisplayFor(modelItem => item.ApplicationUser.UserName)</td>
                     @foreach (var item2 in studentTermCourses)
                     {
