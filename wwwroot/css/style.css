@@ -58,7 +58,7 @@ h4 {
     overflow: hidden;
     font-size: 20px;
     padding: 8px 0;
-    margin: 8px 0;
+    margin: 5px 0;
     
   }
   .textbox i{
@@ -76,7 +76,7 @@ h4 {
 	transform: translate(-50%, -50%);
 	width: 400px;
 	height: 350px;
-	padding: 80px 40px;
+	padding: 44px 20px 0px 20px;
 	background: rgba(0, 0, 0, 0.5);
     border-radius: 15px 60px;
 }
@@ -365,4 +365,5 @@ width: 80px;
 
  .text-danger{
    font-size: 15px;
+   display: inline-block;
  }
