@@ -18,7 +18,7 @@
 
 }
 <div class="row align-items-center justify-content-center">
-    <div class="col-md-7 py-5">
+    <div class="col-md-12 py-5">
         <h3>@ViewData["Title"]</h3>
         <form asp-action="AllResults" method="get">
             <div class="row">
@@ -66,9 +66,9 @@ else
         {
             studentTermCourses = Model.StudentCourses.Where(a => a.CourseEnrollment.Term == Term.الثاني).ToList();
         }
-    <div class="table100 ver4 m-b-110">
+    <div >
 
-        <table class="table" id="table" data-vertable="ver4">
+        <table class="table" id="table" >
             <thead>
                 <tr class="row100 head ">
                     <th class="column100 column2 bc-col" data-column="column2">اسم الطالب</th>
@@ -152,8 +152,7 @@ else
                 </div>
                 </div>
         </form>
-    </div>
-</div>
+   
 
 @if (ViewData["BranchFilter"].ToString() == "" || ViewData["LevelFilter"].ToString() == "" || ViewData["TermFilter"].ToString() == "") { }
 else
@@ -198,4 +197,5 @@ else
     </div>
 }
       
-        
+    </div>
+</div>     
