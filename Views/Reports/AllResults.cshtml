@@ -32,7 +32,14 @@
                         <span asp-validation-for="LevelName" class="text-danger"></span>
                     </div>
                 </div>
-
+ <div class="col-md-6">
+                        <div class="form-group first">
+                            <label asp-for="Term"></label>
+                            @Html.DropDownListFor(model => model.Term,
+                       new SelectList(Enum.GetValues(typeof(Term))), new { @class = "form-control" })
+                            <span asp-validation-for="Term" class="text-danger"></span>
+                        </div>
+                    </div>
                 <div class="col-md-6">
                     <div class="form-group first">
                         <label asp-for="BranchName"></label>
@@ -41,15 +48,8 @@
                         <span asp-validation-for="BranchName" class="text-danger"></span>
                     </div>
                   </div>
-                    <div class="col-md-6">
-                        <div class="form-group first">
-                            <label asp-for="Term"></label>
-                            @Html.DropDownListFor(model => model.Term,
-                       new SelectList(Enum.GetValues(typeof(Term))), new { @class = "form-control" })
-                            <span asp-validation-for="Term" class="text-danger"></span>
-                        </div>
-                    </div>
-              <div class="col-md-3">
+                   
+              <div class="col-md-6">
                 <input type="submit" value="عرض" class="btn btn-danger" /></div>
                     <span class="text-danger"></span>
                   <br>
